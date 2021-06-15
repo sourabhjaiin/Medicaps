@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "082f7a70-3d91-4072-b7bd-88b36e666ec5",
+		"name": "909282_MediCaps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Menu Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:59186/api/menuitems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59186",
+					"path": [
+						"api",
+						"menuitems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Active Menu Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:59186/api/menuitems/available-menuitems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59186",
+					"path": [
+						"api",
+						"menuitems",
+						"available-menuitems"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
