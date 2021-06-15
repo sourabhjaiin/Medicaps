@@ -54,12 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginService.cs" />
     <Compile Include="MediCapsException.cs" />
     <Compile Include="MedicineRepository.cs" />
     <Compile Include="PharmacyRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="signupService.cs" />
+    <Compile Include="Repos\LoginRepo.cs" />
+    <Compile Include="Services\LoginService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MediCaps.DataAccess\MediCaps.DataAccess.csproj">
@@ -71,6 +71,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -12,14 +12,12 @@ using AutoMapper;
 
 namespace MediCaps.API.Controllers
 {
-    //[EnableCors("*", "*", "GET, POST, PUT")]
-    [RoutePrefix("api/medicine")]
-    public class MedicineController : ApiController
+    public class PharmacyController : ApiController
     {
         private readonly MedicapsContext context;
-        public MedicineController()
+        public PharmacyController()
         {
-            context = new MedicapsContext ();
+            context = new MedicapsContext();
         }
 
         protected override void Dispose(bool disposing)
@@ -28,25 +26,23 @@ namespace MediCaps.API.Controllers
             base.Dispose(disposing);
         }
 
-        
-
         [HttpGet]
-        [ResponseType(typeof(ProductResponse[]))]
-        public IHttpActionResult GetMedicine()
+        [ResponseType(typeof(PharmacyResponse[]))]
+        public IHttpActionResult GetPharmacy()
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Medicine, ProductResponse>();
+                cfg.CreateMap<Pharmacy, PharmacyResponse>();
             });
             IMapper iMapper = config.CreateMapper();
 
-            var result = context.Medicines.ToArray();
-            var productresponse = iMapper.Map<ProductResponse[]>(result);
-            return Ok(productresponse);
+            var result = context.Pharmacies.ToArray();
+            var pharmacyresponse = iMapper.Map<PharmacyResponse[]>(result);
+            return Ok(pharmacyresponse);
         }
 
         [HttpPost]
         [ResponseType(typeof(void))]
-        public IHttpActionResult Post([FromBody] ProductRequest model)
+        public IHttpActionResult Post([FromBody] PharmacyRequest model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -54,11 +50,11 @@ namespace MediCaps.API.Controllers
             if (context.Logins.Find(model.UserId)?.UserType == UserType.Admin)
             {
                 var config = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<Medicine, ProductRequest>();
+                    cfg.CreateMap<Pharmacy, PharmacyRequest>();
                 });
                 IMapper iMapper = config.CreateMapper();
-                var medicine = iMapper.Map<Medicine>(model);
-                context.Medicines.Add(medicine);
+                var pharmacy = iMapper.Map<Pharmacy>(model);
+                context.Pharmacies.Add(pharmacy);
                 int RowsAffected = context.SaveChanges();
                 if (RowsAffected == 1)
                     return StatusCode(HttpStatusCode.Created);
@@ -67,5 +63,6 @@ namespace MediCaps.API.Controllers
             }
             return StatusCode(HttpStatusCode.Unauthorized);
         }
+
     }
 }

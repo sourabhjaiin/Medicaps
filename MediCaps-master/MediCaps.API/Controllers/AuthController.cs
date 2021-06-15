@@ -8,17 +8,27 @@ using System.Web.Http;
 using MediCaps.DataAccess.DTOs;
 using MediCaps.DataAccess;
 using MediCaps.DataAccess.Entities;
+using MediCaps.BusinessLogic.Services;
+using System.Net.Mail;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 
 using System.Web.Http.Description;
 
 namespace MediCaps.API.Controllers
 {
-
-    
-    [RoutePrefix("api/auth")]
+    //[Route("api/auth")]
     public class AuthController : ApiController
     {
+        readonly LoginService service;
+        public AuthController()
+        {
+            this.service = new LoginService();
+        }
+
+        [HttpPost]
+        [Route("api/auth/login")]
         public IHttpActionResult Post([FromBody] LoginRequest model)
         {
             if (!ModelState.IsValid)
@@ -38,5 +48,30 @@ namespace MediCaps.API.Controllers
             }
             return response;
         }
+
+        [HttpPost]
+        [Route("api/auth/register")]
+        public IHttpActionResult AddUser([FromBody] LoginDto user)
+        {
+            try
+            {
+                if (ModelState.IsValid == false)
+                    return BadRequest(ModelState);
+
+                var result = service.AddUser(user);
+                if (!result)
+                    return BadRequest("Error saving user");
+
+                //SendMail(user);
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
     }
 }

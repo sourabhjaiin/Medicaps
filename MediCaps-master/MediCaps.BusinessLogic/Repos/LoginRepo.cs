@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediCaps.DataAccess;
-using MediCaps.DataAccess.Entities;
 
-namespace MediCaps.BusinessLogic
+
+namespace MediCaps.BusinessLogic.Repos
 {
-    public class LoginService : IDisposable
+    public class LoginRepo : IDisposable
     {
         private readonly MedicapsContext context;
-        public LoginService()
+        public LoginRepo()
         {
             context = new MedicapsContext();
         }
@@ -31,5 +31,27 @@ namespace MediCaps.BusinessLogic
         {
             return context.Logins.Any(user => user.UserName.Equals(log.UserName) && user.Password.Equals(log.Password));
         }
+
+        public bool AddUser(Login dto)
+        {
+            if (context.Logins.Any(o => o.UserName == dto.UserName))
+            {
+                throw new Exception("Username already taken"); //indicates the username already is taken
+            }
+            else
+            {
+                context.Logins.Add(dto);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected > 0;
+            }
+        }
+
+        public Login getUser(int Id)
+        {
+            var Obj = context.Logins.Find(Id);
+            return Obj;
+        }
+
+
     }
 }

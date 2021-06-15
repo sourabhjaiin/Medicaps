@@ -20,9 +20,15 @@ namespace MediCaps.DataAccess
         [StringLength(30), Required]
         public string UserName { set; get; }
 
+        [StringLength(30)]
+        public string Email { get; set; }
+
         [Required, StringLength(30)]
         public string Password { set; get; }
 
         public UserType UserType { get; set; }
+
+        public string Phone { get; set; }
+        public bool Confirmed { get; set; }
     }
 }

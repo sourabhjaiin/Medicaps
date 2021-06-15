@@ -56,8 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperProfiles\DtoMapper.cs" />
+    <Compile Include="DTOs\LoginDto.cs" />
     <Compile Include="DTOs\LoginRequest.cs" />
     <Compile Include="DTOs\LoginResponse.cs" />
+    <Compile Include="DTOs\PharmacyRequest.cs" />
+    <Compile Include="DTOs\PharmacyResponse.cs" />
     <Compile Include="DTOs\ProductRequest.cs" />
     <Compile Include="DTOs\ProductResponse.cs" />
     <Compile Include="Entities\Login.cs" />
@@ -98,6 +102,10 @@
     <Compile Include="Migrations\202106140951502_added usertype in login .designer.cs">
       <DependentUpon>202106140951502_added usertype in login .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106150607067_login table updated.cs" />
+    <Compile Include="Migrations\202106150607067_login table updated.designer.cs">
+      <DependentUpon>202106150607067_login table updated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -129,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106140951502_added usertype in login .resx">
       <DependentUpon>202106140951502_added usertype in login .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106150607067_login table updated.resx">
+      <DependentUpon>202106150607067_login table updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
