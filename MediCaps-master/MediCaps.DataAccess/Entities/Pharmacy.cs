@@ -13,5 +13,7 @@ namespace MediCaps.DataAccess.Entities
         public string PsName { get; set; }
 
         public string Location { get; set; }
+
+        public int Pincode { get; set; }
     }
 }

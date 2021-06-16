@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace MediCaps.DataAccess.AutoMapperProfiles
 {
-    public class DtoMapper : Profile
+    public class DtoMapper 
     {
-        public DtoMapper()
+        public static void  Map()
         {
-            CreateMap<Login, LoginDto>().ReverseMap();
+            Mapper.Initialize(config => {
+                config.CreateMap<LoginDto, Login>().ReverseMap();
+            });
+            
         }
     }
 }

@@ -11,29 +11,26 @@ namespace MediCaps.BusinessLogic.Services
 {
     public class LoginService
     {
-        readonly IMapper mapper;
+  
         readonly LoginRepo repository;
 
         public LoginService()
         {
+            this.repository = new LoginRepo();
         }
 
-        public LoginService(IMapper mapper)
-        {
-            this.repository = new LoginRepo();
-            this.mapper = mapper;
-        }
+      
 
         public bool AddUser(LoginDto dto)
         {
-            var Obj = mapper.Map<Login>(dto);
+            var Obj = Mapper.Map<Login>(dto);
             return repository.AddUser(Obj);
         }
 
         public LoginDto getUser(int Id)
         {
             var Obj = repository.getUser(Id);
-            var Dto = mapper.Map<LoginDto>(Obj);
+            var Dto = Mapper.Map<LoginDto>(Obj);
             return Dto;
         }
     }
