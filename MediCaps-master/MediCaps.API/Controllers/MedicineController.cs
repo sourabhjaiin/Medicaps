@@ -9,6 +9,8 @@ using MediCaps.DataAccess;
 using MediCaps.DataAccess.Entities;
 using System.Web.Http.Description;
 using AutoMapper;
+using MediCaps.BusinessLogic.Repos;
+using MediCaps.BusinessLogic;
 
 namespace MediCaps.API.Controllers
 {
@@ -17,9 +19,11 @@ namespace MediCaps.API.Controllers
     public class MedicineController : ApiController
     {
         private readonly MedicapsContext context;
+        private readonly MedicineRepository medRepo;
         public MedicineController()
         {
             context = new MedicapsContext ();
+            medRepo = new MedicineRepository();
         }
 
         protected override void Dispose(bool disposing)
@@ -39,7 +43,7 @@ namespace MediCaps.API.Controllers
             });
             IMapper iMapper = config.CreateMapper();
 
-            var result = context.Medicines.ToArray();
+            var result = medRepo.GetMed();
             var productresponse = iMapper.Map<ProductResponse[]>(result);
             return Ok(productresponse);
         }
@@ -58,14 +62,52 @@ namespace MediCaps.API.Controllers
                 });
                 IMapper iMapper = config.CreateMapper();
                 var medicine = iMapper.Map<Medicine>(model);
-                context.Medicines.Add(medicine);
-                int RowsAffected = context.SaveChanges();
-                if (RowsAffected == 1)
+                
+                bool RowsAffected = medRepo.Add(medicine); 
+
+                if (RowsAffected)
                     return StatusCode(HttpStatusCode.Created);
                 else
                     return InternalServerError();
             }
             return StatusCode(HttpStatusCode.Unauthorized);
         }
+
+
+
+        [HttpGet]
+        [ResponseType(typeof(ProductResponse[]))]
+        [Route("{med}")]
+        public IHttpActionResult GetbyName(string med)
+        {
+            var result = medRepo.GetMedicinebyName(med);
+            var response = Mapper.Map<ProductResponse[]>(result.ToArray());
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(ProductResponse[]))]
+        [Route("{comp}")]
+        public IHttpActionResult GetbyComposition(string comp)
+        {
+            var result = medRepo.GetMedicineByComposition(comp);
+            var response = Mapper.Map<ProductResponse[]>(result.ToArray());
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(ProductResponse[]))]
+        [Route("{id}")]
+        public IHttpActionResult GetbyId(int id)
+        {
+            var result = medRepo.GetMedicinebyId(id);
+            var response = Mapper.Map<ProductResponse[]>(result.ToArray());
+            return Ok(response);
+        }
+
+
+
+
+
     }
 }

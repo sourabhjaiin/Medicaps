@@ -9,15 +9,19 @@ using MediCaps.DataAccess;
 using MediCaps.DataAccess.Entities;
 using System.Web.Http.Description;
 using AutoMapper;
+using MediCaps.BusinessLogic;
+using MediCaps.BusinessLogic.Repos;
 
 namespace MediCaps.API.Controllers
 {
     public class PharmacyController : ApiController
     {
         private readonly MedicapsContext context;
+        private readonly PharmacyRepository phar;
         public PharmacyController()
         {
             context = new MedicapsContext();
+            phar = new PharmacyRepository();
         }
 
         protected override void Dispose(bool disposing)
@@ -35,7 +39,7 @@ namespace MediCaps.API.Controllers
             });
             IMapper iMapper = config.CreateMapper();
 
-            var result = context.Pharmacies.ToArray();
+            var result = phar.GetPharamcy();
             var pharmacyresponse = iMapper.Map<PharmacyResponse[]>(result);
             return Ok(pharmacyresponse);
         }
@@ -54,9 +58,8 @@ namespace MediCaps.API.Controllers
                 });
                 IMapper iMapper = config.CreateMapper();
                 var pharmacy = iMapper.Map<Pharmacy>(model);
-                context.Pharmacies.Add(pharmacy);
-                int RowsAffected = context.SaveChanges();
-                if (RowsAffected == 1)
+                bool RowsAffected = phar.Add(pharmacy);
+                if (RowsAffected)
                     return StatusCode(HttpStatusCode.Created);
                 else
                     return InternalServerError();

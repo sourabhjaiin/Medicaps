@@ -68,7 +68,6 @@
     <Compile Include="Entities\Medicine.cs" />
     <Compile Include="Entities\Pharmacy.cs" />
     <Compile Include="Entities\Registration.cs" />
-    <Compile Include="Entities\response.cs" />
     <Compile Include="MedicapsContext.cs" />
     <Compile Include="Migrations\202106130640538_created new login table.cs" />
     <Compile Include="Migrations\202106130640538_created new login table.designer.cs">
@@ -114,6 +113,14 @@
     <Compile Include="Migrations\202106160542518_updated in user table.designer.cs">
       <DependentUpon>202106160542518_updated in user table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106160924391_updated in medicine table.cs" />
+    <Compile Include="Migrations\202106160924391_updated in medicine table.designer.cs">
+      <DependentUpon>202106160924391_updated in medicine table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106161645283_something.cs" />
+    <Compile Include="Migrations\202106161645283_something.designer.cs">
+      <DependentUpon>202106161645283_something.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -154,6 +161,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106160542518_updated in user table.resx">
       <DependentUpon>202106160542518_updated in user table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106160924391_updated in medicine table.resx">
+      <DependentUpon>202106160924391_updated in medicine table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106161645283_something.resx">
+      <DependentUpon>202106161645283_something.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

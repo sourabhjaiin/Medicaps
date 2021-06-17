@@ -17,7 +17,7 @@ namespace MediCaps.DataAccess
 
         public virtual DbSet<Registration> Registrations { get; set; }
         
-        public virtual DbSet<Response> Responses { get; set; }
+        
 
         public virtual DbSet<Medicine> Medicines { get; set; }
 

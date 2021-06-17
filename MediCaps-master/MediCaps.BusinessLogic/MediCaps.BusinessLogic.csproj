@@ -54,9 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MediCapsException.cs" />
-    <Compile Include="MedicineRepository.cs" />
-    <Compile Include="PharmacyRepository.cs" />
+    <Compile Include="Repos\MediCapsException.cs" />
+    <Compile Include="Repos\MedicineRepository.cs" />
+    <Compile Include="Repos\PharmacyRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\LoginRepo.cs" />
     <Compile Include="Services\LoginService.cs" />

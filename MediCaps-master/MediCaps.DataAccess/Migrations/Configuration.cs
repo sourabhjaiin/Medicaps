@@ -31,13 +31,13 @@
             var p5 = new Pharmacy() { PsID = 101, PsName = "Bablu Pharmacy", Location = "Mirzapur" ,Pincode=741852};
             context.Pharmacies.AddOrUpdate(p => p.PsName, p1, p2, p3, p4, p5);
 
-            var m1 = new Medicine() { MedicineId = 1001, MedicineName = "Remd3sivir", MedicinePrice =2800, Composition = "Tocilizumab", IsDelivable =false};
-            var m2 = new Medicine() { MedicineId = 1002, MedicineName = "Paracetamol", MedicinePrice =50, Composition = "Aspirin", IsDelivable =true};
-            var m3 = new Medicine() { MedicineId = 1003, MedicineName = "Ibuprofen", MedicinePrice =100, Composition = "Bromelain", IsDelivable =true};
-            var m4 = new Medicine() { MedicineId = 1004, MedicineName = "Amphotericin-B", MedicinePrice =6800, Composition = "Fungisome", IsDelivable =false};
-            var m5 = new Medicine() { MedicineId = 1005, MedicineName = "Sudafed", MedicinePrice =250, Composition = "Mucinex", IsDelivable =true};
-            context.Medicines.AddOrUpdate(m => m.MedicineName, m1, m2, m3, m4, m5);
+            var m1 = new Medicine() { MedicineName = "Remdesivir", MedicinePrice = 2800, Composition = "Tocilizumab", IsDelivable = false };
+            var m2 = new Medicine() { MedicineName = "Paracetamol", MedicinePrice = 50, Composition = "Aspirin", IsDelivable = true };
+            var m3 = new Medicine() { MedicineName = "Ibuprofen", MedicinePrice = 100, Composition = "Bromelain", IsDelivable = true };
+            var m4 = new Medicine() { MedicineName = "Amphotericin-B", MedicinePrice = 6800, Composition = "Fungisome", IsDelivable = false };
+            var m5 = new Medicine() { MedicineName = "Sudafed", MedicinePrice = 250, Composition = "Mucinex", IsDelivable = true };
 
+            context.Medicines.AddOrUpdate(m => m.MedicineId, m1, m2, m3, m4, m5);
         }
     }
 }
