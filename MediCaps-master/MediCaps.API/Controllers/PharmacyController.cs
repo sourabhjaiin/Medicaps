@@ -53,11 +53,8 @@ namespace MediCaps.API.Controllers
 
             if (context.Logins.Find(model.UserId)?.UserType == UserType.Admin)
             {
-                var config = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<Pharmacy, PharmacyRequest>();
-                });
-                IMapper iMapper = config.CreateMapper();
-                var pharmacy = iMapper.Map<Pharmacy>(model);
+               
+                var pharmacy = Mapper.Map<Pharmacy>(model);
                 bool RowsAffected = phar.Add(pharmacy);
                 if (RowsAffected)
                     return StatusCode(HttpStatusCode.Created);
@@ -65,6 +62,26 @@ namespace MediCaps.API.Controllers
                     return InternalServerError();
             }
             return StatusCode(HttpStatusCode.Unauthorized);
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                var prod = context.Pharmacies.Find(id);
+                if (prod == null)
+                    return NotFound();
+                var deleted = phar.PharDelete(id);
+                if (deleted)
+                    return StatusCode(HttpStatusCode.NoContent);
+                return BadRequest("Deletion Failed");
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
         }
 
     }

@@ -59,5 +59,14 @@ namespace MediCaps.BusinessLogic
                         select obj;
             return query.ToList();
         }
+
+
+        public bool  MedDelete(int id)
+        {
+            var med = context.Medicines.Find(id);
+            context.Medicines.Remove(med);
+            var row = context.SaveChanges();
+            return row == 1;
+        }
     }
 }

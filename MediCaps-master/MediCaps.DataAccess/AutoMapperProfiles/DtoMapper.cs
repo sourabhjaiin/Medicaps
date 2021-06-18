@@ -14,6 +14,11 @@ namespace MediCaps.DataAccess.AutoMapperProfiles
         {
             Mapper.Initialize(config => {
                 config.CreateMap<LoginDto, Login>().ReverseMap();
+                config.CreateMap<Medicine, ProductRequest>().ReverseMap();
+                config.CreateMap<Medicine, ProductResponse>().ReverseMap();
+                config.CreateMap<Pharmacy, PharmacyRequest>().ReverseMap();
+                config.CreateMap<Pharmacy, PharmacyResponse>().ReverseMap();
+                config.CreateMap<Login, LoginResponse>().ReverseMap();
             });
             
         }

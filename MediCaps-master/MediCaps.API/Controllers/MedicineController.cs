@@ -33,7 +33,7 @@ namespace MediCaps.API.Controllers
         }
 
         
-
+        
         [HttpGet]
         [ResponseType(typeof(ProductResponse[]))]
         public IHttpActionResult GetMedicine()
@@ -48,6 +48,7 @@ namespace MediCaps.API.Controllers
             return Ok(productresponse);
         }
 
+        [Route("/add")]
         [HttpPost]
         [ResponseType(typeof(void))]
         public IHttpActionResult Post([FromBody] ProductRequest model)
@@ -57,11 +58,10 @@ namespace MediCaps.API.Controllers
 
             if (context.Logins.Find(model.UserId)?.UserType == UserType.Admin)
             {
-                var config = new MapperConfiguration(cfg => {
-                    cfg.CreateMap<Medicine, ProductRequest>();
-                });
-                IMapper iMapper = config.CreateMapper();
-                var medicine = iMapper.Map<Medicine>(model);
+                
+               
+                var medicine = Mapper.Map<Medicine>(model);
+                
                 
                 bool RowsAffected = medRepo.Add(medicine); 
 
@@ -77,7 +77,7 @@ namespace MediCaps.API.Controllers
 
         [HttpGet]
         [ResponseType(typeof(ProductResponse[]))]
-        [Route("{med}")]
+        [Route("searchmed/{med}")]
         public IHttpActionResult GetbyName(string med)
         {
             var result = medRepo.GetMedicinebyName(med);
@@ -87,7 +87,7 @@ namespace MediCaps.API.Controllers
 
         [HttpGet]
         [ResponseType(typeof(ProductResponse[]))]
-        [Route("{comp}")]
+        [Route("searchcom/{comp}")]
         public IHttpActionResult GetbyComposition(string comp)
         {
             var result = medRepo.GetMedicineByComposition(comp);
@@ -95,15 +95,27 @@ namespace MediCaps.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        [ResponseType(typeof(ProductResponse[]))]
-        [Route("{id}")]
-        public IHttpActionResult GetbyId(int id)
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
         {
-            var result = medRepo.GetMedicinebyId(id);
-            var response = Mapper.Map<ProductResponse[]>(result.ToArray());
-            return Ok(response);
+            try
+            {
+                var prod = context.Medicines.Find(id);
+                if (prod == null)
+                    return NotFound();
+                var deleted = medRepo.MedDelete(id);
+                if (deleted)
+                    return StatusCode(HttpStatusCode.NoContent);
+                return BadRequest("Deletion Failed");
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
         }
+
+        
 
 
 

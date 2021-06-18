@@ -35,5 +35,13 @@ namespace MediCaps.BusinessLogic
             return Rows == 1;
         }
 
+
+        public bool PharDelete(int id)
+        {
+            var phar = context.Pharmacies.Find(id);
+            context.Medicines.Remove(phar);
+            var row = context.SaveChanges();
+            return row == 1;
+        }
     }
 }

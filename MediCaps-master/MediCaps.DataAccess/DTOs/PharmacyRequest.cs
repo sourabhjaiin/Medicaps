@@ -16,6 +16,8 @@ namespace MediCaps.DataAccess.DTOs
 
         [Required]
         public string Location { get; set; }
+
+        public int Pincode { get; set; }
         public int UserId { get; set; }
     }
 }

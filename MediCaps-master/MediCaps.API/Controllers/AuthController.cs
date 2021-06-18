@@ -12,6 +12,9 @@ using MediCaps.BusinessLogic.Services;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using MediCaps.BusinessLogic.Repos;
+using MediCaps.DataAccess.AutoMapperProfiles;
+using AutoMapper;
 
 
 using System.Web.Http.Description;
@@ -22,9 +25,11 @@ namespace MediCaps.API.Controllers
     public class AuthController : ApiController
     {
         readonly LoginService service;
+        readonly LoginRepo logrepo;
         public AuthController()
         {
             this.service = new LoginService();
+            this.logrepo = new LoginRepo();
         }
 
         [HttpPost]
@@ -70,6 +75,17 @@ namespace MediCaps.API.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(LoginResponse[]))]
+        public IHttpActionResult GetMedicine()
+        {
+            
+
+            var result = logrepo.GetAll();
+            var response = Mapper.Map<LoginResponse[]>(result);
+            return Ok( response);
         }
 
 
