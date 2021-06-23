@@ -1,0 +1,59 @@
+<button class="btn btn-success p-2 m-5 d-inline" [routerLink]="['/medicine']" >Go Back</button>
+<div class="signup-form">
+    <form method="post"  #frm="ngForm" novalidate>
+        <h1 class="text-center tit">MediCap</h1>
+        <p class="text-center tit" style="font-style:oblique;">An Online Pharmacy</p>
+		<h2 class="text-center">Add Medicine</h2>
+	
+		<hr>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+                    <span class="input-group-text">
+						<span class="material-icons">
+                            &#x214A;
+                            </span>
+					</span>              
+				</div>
+				<input type="text" class="form-control"  placeholder="Medicine Name" name="medname" [(ngModel)]="medicines.MedicineName">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="material-icons">
+                            &#x214A;
+                            </span>
+					</span>                    
+				</div>
+				<input type="text" class="form-control"  placeholder="Composition" name="comp"  [(ngModel)]="medicines.Composition">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="material-icons-round">
+                            &#x214A;
+                            </span>
+					</span>                    
+				</div>
+				<input type="number"  class="form-control" name="price"  placeholder="Price" [(ngModel)]="medicines.MedicinePrice">
+			</div>
+        </div>
+		
+		
+		
+        <div class="form-group">
+			<label class="form-check-label"><input type="checkbox" required="required" name="isDelivable" [(ngModel)]="medicines.IsDelivable">            IsDelivable</label>
+		</div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg" (click)=" AddMed()"  >Add Medicine</button>
+        </div>
+    </form>
+	
+</div>
+<br>
+<br>
+

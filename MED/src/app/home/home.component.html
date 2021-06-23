@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://media.istockphoto.com/vectors/bright-luminous-blue-medical-digital-neon-sign-for-a-pharmacy-or-vector-id1255809931" alt="" width="40" height="40" class="d-inline-block align-text-top">
+        Medicaps
+      </a>
+    </div>
+
+    <div class="navbar-nav float-end" >
+        
+          <a class="nav-item nav-link" [routerLink]="['/login']" *ngIf="!adminLoggedIn && !userLoggedIn" >Login</a>
+          <a class="nav-item nav-link" [routerLink]="['/admin-page']" *ngIf="adminLoggedIn && userLoggedIn">Home</a>
+          
+          
+          <a class="nav-item nav-link" [routerLink]="['/contactus']">Contact</a>
+          
+          <button class="btn btn-danger m-2"  (click)="logout()"> LogOut </button>
+          
+         
+      </div>
+  </nav>
+
+  

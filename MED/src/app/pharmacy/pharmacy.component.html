@@ -1,0 +1,43 @@
+<br>
+    <button class="btn btn-warning p-2 m-5 d-inline" [routerLink]="['/add-phar']" *ngIf="adminLoggedIn">Add Pharmacy</button>
+    <button class="btn btn-warning l-5 p-2 m-5 d-inline" [routerLink]="['/medicine']" >Medicine List</button>
+
+    <form class="row g-3  ms-auto float-end m-2" >
+        <div class="col-auto">
+            <label class="label text-success d-inline badge"> Search Pharmacy</label>
+          <input type="text" class="form-control d-inline" id="inputPassword2" placeholder="Enter Pincode/Location" [(ngModel)]="pharm" name="pharm">
+        </div>
+        
+    </form>
+
+
+<div class="container">
+    <h1 class="text-center text-primary bg-light p-2  border border-danger md-4">Pharmacy Stores</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let p of pharmacies | filter : pharm " >
+            <div class="card-deck" >
+                <div class="card" style="width: 18rem; height: 27rem;">
+                    <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGhhcm1hY3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" class="card-img-top" />
+                    <div class="card-header">
+                        <h2 class="card-title text-center text-primary">{{p.PsName}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-text text-secondary">Location :  {{p.Location}}</h5>
+                        <h5 class="card-text text-secondary">Pincode : {{p.Pincode}}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2 d-md-block ml-auto">
+                            
+                            
+                            <button class="btn btn-danger ms-auto" type="button" *ngIf="adminLoggedIn" (click)="DeletePhar(p.PsID)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</div>

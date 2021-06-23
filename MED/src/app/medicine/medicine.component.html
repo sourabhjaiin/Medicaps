@@ -1,0 +1,49 @@
+
+    <button class="btn btn-success p-2 m-5 d-inline" [routerLink]="['/add-med']" *ngIf="adminLoggedIn" >Add Medicine</button>
+    <button class="btn btn-success p-2 m-5 d-inline" [routerLink]="['/pharmacy']" >Pharmacy List</button>
+    <form class="row g-3  ms-auto float-end m-2" >
+        <div class="col-auto">
+            <label class="label text-success d-inline badge"> Search Medicine</label>
+          <input type="text" class="form-control" id="inputPassword2" placeholder="Enter Name/Composition" name="medi" [(ngModel)]="medi">
+        </div>
+     
+       
+    </form>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+    <h1 class="text-center text-primary bg-light p-2  border border-danger md-4">Medicap's Medicine List</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let m of medicines | filter : medi">
+            <div class="card-deck" >
+                <div class="card" style="width: 18rem; height: 28rem;">
+                    <img src="https://images.unsplash.com/photo-1522335579687-9c718c5184d7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fG1lZGljaW5lfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        alt="" class="card-img-top" />
+                    <div class="card-header">
+                        <h2 class="card-title text-center text-primary">{{m.MedicineName}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-text text-secondary">Price : {{m.MedicinePrice}}</h5>
+                        <h5 class="card-text text-secondary">Composition : {{m.Composition}}</h5>
+                        <h5 class="card-text text-secondary">IsDelivable : {{m.IsDelivable}}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2 d-md-block ml-auto">
+                            <button class="btn btn-warning me-md-4"  type="button" (click)="Update(m.MedicineId)" >Update</button>
+                            <button class="btn btn-danger ms-auto" type="button" (click)="Delete(m.MedicineId)" >Remove</button><br>
+                            <button class="btn btn-warning me-md-4"  type="button" > Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</div>

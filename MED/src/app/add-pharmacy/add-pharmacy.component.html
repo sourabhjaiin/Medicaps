@@ -1,0 +1,54 @@
+<button class="btn btn-success p-2 m-5 d-inline" [routerLink]="['/pharmacy']" >Go Back</button>
+<div class="signup-form">
+    <form method="post"  #frm="ngForm" novalidate>
+        <h1 class="text-center tit">MediCap</h1>
+        <p class="text-center tit" style="font-style:oblique;">An Online Pharmacy</p>
+		<h2 class="text-center">Add Pharmacy</h2>
+	
+		<hr>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+                    <span class="input-group-text">
+						<span class="material-icons">
+                            &#x214A;
+                            </span>
+					</span>              
+				</div>
+				<input type="text" class="form-control"  placeholder="Pharmacy Name" name="pharname" [(ngModel)]="pharmacies.PsName">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="material-icons">
+                            &#x214A;
+                            </span>
+					</span>                    
+				</div>
+				<input type="text" class="form-control"  placeholder="Location" name="Location"  [(ngModel)]="pharmacies.Location">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="material-icons-round">
+                            &#x214A;
+                            </span>
+					</span>                    
+				</div>
+				<input type="number"  class="form-control" name="pincode"  placeholder="Pincode" [(ngModel)]="pharmacies.Pincode">
+			</div>
+        </div>
+
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg" (click)=" AddPhar()" [disabled]="!frm.valid" >Add Pharmacy</button>
+        </div>
+    </form>
+	
+</div>
+<br>
+<br>
+

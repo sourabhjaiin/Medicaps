@@ -1,0 +1,22 @@
+<button class="btn btn-success p-2 m-5 d-inline" [routerLink]="['/medicine']" >Go Back</button>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card"  style="width: 18rem; height: 28rem;">
+                <img src="https://images.unsplash.com/photo-1522335579687-9c718c5184d7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fG1lZGljaW5lfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="" class="card-img-top" />
+                
+                <div class="card-body">
+                    <h5 class="card-text text-secondary">Name : {{medicine.MedicineName}}</h5>
+                    <h5 class="card-text text-secondary">Price : {{medicine.MedicinePrice}}</h5>
+                    <h5 class="card-text text-secondary">Composition : {{medicine.Composition}}</h5>
+                    <h5 class="card-text text-secondary">IsDelivable : {{medicine.IsDelivable}}</h5>
+                </div>
+            </div>
+
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
