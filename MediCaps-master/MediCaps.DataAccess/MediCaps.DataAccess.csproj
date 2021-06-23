@@ -68,6 +68,8 @@
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Login.cs" />
     <Compile Include="Entities\Medicine.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Pharmacy.cs" />
     <Compile Include="Entities\Registration.cs" />
     <Compile Include="MedicapsContext.cs" />
@@ -131,6 +133,10 @@
     <Compile Include="Migrations\202106221301462_updating.designer.cs">
       <DependentUpon>202106221301462_updating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106230829098_order and orderitem table.cs" />
+    <Compile Include="Migrations\202106230829098_order and orderitem table.designer.cs">
+      <DependentUpon>202106230829098_order and orderitem table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106221301462_updating.resx">
       <DependentUpon>202106221301462_updating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106230829098_order and orderitem table.resx">
+      <DependentUpon>202106230829098_order and orderitem table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
