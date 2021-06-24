@@ -25,8 +25,8 @@ namespace MediCaps.DataAccess
 
         public virtual DbSet<Cart> Carts { get; set; }
 
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderItem>OrderItems {get; set;}
+        public virtual DbSet<OrderPlaced> OrderPlaceds { get; set; }
+
 
     }
 

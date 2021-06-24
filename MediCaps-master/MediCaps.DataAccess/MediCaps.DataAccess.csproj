@@ -61,6 +61,8 @@
     <Compile Include="DTOs\LoginDto.cs" />
     <Compile Include="DTOs\LoginRequest.cs" />
     <Compile Include="DTOs\LoginResponse.cs" />
+    <Compile Include="DTOs\OrderDto.cs" />
+    <Compile Include="DTOs\OrderResponse.cs" />
     <Compile Include="DTOs\PharmacyRequest.cs" />
     <Compile Include="DTOs\PharmacyResponse.cs" />
     <Compile Include="DTOs\ProductRequest.cs" />
@@ -68,8 +70,7 @@
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Login.cs" />
     <Compile Include="Entities\Medicine.cs" />
-    <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\OrderItem.cs" />
+    <Compile Include="Entities\OrderPlaced.cs" />
     <Compile Include="Entities\Pharmacy.cs" />
     <Compile Include="Entities\Registration.cs" />
     <Compile Include="MedicapsContext.cs" />
@@ -129,13 +130,25 @@
     <Compile Include="Migrations\202106220925532_added cart table.designer.cs">
       <DependentUpon>202106220925532_added cart table.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106221301462_updating.cs" />
-    <Compile Include="Migrations\202106221301462_updating.designer.cs">
-      <DependentUpon>202106221301462_updating.cs</DependentUpon>
+    <Compile Include="Migrations\202106231702179_unab.cs" />
+    <Compile Include="Migrations\202106231702179_unab.designer.cs">
+      <DependentUpon>202106231702179_unab.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106230829098_order and orderitem table.cs" />
-    <Compile Include="Migrations\202106230829098_order and orderitem table.designer.cs">
-      <DependentUpon>202106230829098_order and orderitem table.cs</DependentUpon>
+    <Compile Include="Migrations\202106231715286_order placed table.cs" />
+    <Compile Include="Migrations\202106231715286_order placed table.designer.cs">
+      <DependentUpon>202106231715286_order placed table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231754369_order uplaced table.cs" />
+    <Compile Include="Migrations\202106231754369_order uplaced table.designer.cs">
+      <DependentUpon>202106231754369_order uplaced table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231806548_order uplacedddd table.cs" />
+    <Compile Include="Migrations\202106231806548_order uplacedddd table.designer.cs">
+      <DependentUpon>202106231806548_order uplacedddd table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231848064_order uplaceddddss table.cs" />
+    <Compile Include="Migrations\202106231848064_order uplaceddddss table.designer.cs">
+      <DependentUpon>202106231848064_order uplaceddddss table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -187,11 +200,20 @@
     <EmbeddedResource Include="Migrations\202106220925532_added cart table.resx">
       <DependentUpon>202106220925532_added cart table.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106221301462_updating.resx">
-      <DependentUpon>202106221301462_updating.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106231702179_unab.resx">
+      <DependentUpon>202106231702179_unab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106230829098_order and orderitem table.resx">
-      <DependentUpon>202106230829098_order and orderitem table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106231715286_order placed table.resx">
+      <DependentUpon>202106231715286_order placed table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231754369_order uplaced table.resx">
+      <DependentUpon>202106231754369_order uplaced table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231806548_order uplacedddd table.resx">
+      <DependentUpon>202106231806548_order uplacedddd table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231848064_order uplaceddddss table.resx">
+      <DependentUpon>202106231848064_order uplaceddddss table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

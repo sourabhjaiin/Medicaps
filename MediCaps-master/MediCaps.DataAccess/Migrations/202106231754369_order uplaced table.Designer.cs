@@ -7,13 +7,13 @@ namespace MediCaps.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class updating : IMigrationMetadata
+    public sealed partial class orderuplacedtable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updating));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(orderuplacedtable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106221301462_updating"; }
+            get { return "202106231754369_order uplaced table"; }
         }
         
         string IMigrationMetadata.Source

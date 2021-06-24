@@ -7,13 +7,13 @@ namespace MediCaps.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class orderandorderitemtable : IMigrationMetadata
+    public sealed partial class orderuplaceddddtable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(orderandorderitemtable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(orderuplaceddddtable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106230829098_order and orderitem table"; }
+            get { return "202106231806548_order uplacedddd table"; }
         }
         
         string IMigrationMetadata.Source

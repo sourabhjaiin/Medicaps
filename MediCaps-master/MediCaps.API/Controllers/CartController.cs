@@ -12,6 +12,7 @@ using MediCaps.BusinessLogic;
 
 namespace MediCaps.API.Controllers
 {
+
     public class CartController : ApiController
     {
         public readonly MedicapsContext context;
@@ -76,6 +77,16 @@ namespace MediCaps.API.Controllers
             {
                 return InternalServerError();
             }
+        }
+
+        [HttpDelete]
+        [Route("clearcart/{userId}")]
+        public IHttpActionResult ClearCart(int userId)
+        {
+            var deleted = cartServices.ClearCart(userId);
+            if (deleted)
+                return StatusCode(HttpStatusCode.NoContent);
+            return BadRequest("Deletion Failed");
         }
     }
 }
