@@ -34,6 +34,9 @@ namespace MediCaps.BusinessLogic.Services
             return Dto;
         }
 
-        
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

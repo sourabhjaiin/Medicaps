@@ -37,10 +37,18 @@ namespace MediCaps.API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var Items = cartServices.GetCart(id);
-            if (Items == null)
-                return NotFound();
-            return Ok(Items);
+            try
+            {
+                var Items = cartServices.GetCart(id);
+                if (Items == null)
+                    return NotFound();
+                return Ok(Items);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+
         }
 
         [HttpPost]
@@ -83,10 +91,20 @@ namespace MediCaps.API.Controllers
         [Route("clearcart/{userId}")]
         public IHttpActionResult ClearCart(int userId)
         {
-            var deleted = cartServices.ClearCart(userId);
-            if (deleted)
-                return StatusCode(HttpStatusCode.NoContent);
-            return BadRequest("Deletion Failed");
+            try
+            {
+                var deleted = cartServices.ClearCart(userId);
+                if (deleted)
+                    return StatusCode(HttpStatusCode.NoContent);
+                return BadRequest("Deletion Failed");
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+
+
         }
     }
 }
